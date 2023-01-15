@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// pascal --> User
+model User {
+  id          Int    @id @default(autoincrement())
+  username    String @unique
+  firstname   String
+  secondtname String
+  password    String
+  email       String @unique
+  phone       String @unique
+  title       String
+}
+
+model Contact {
+  id      Int    @id @default(autoincrement())
+  name    String
+  emai    String
+  subject String
+  message String
+}
+
+model Fruit {
+  id       Int    @id @default(autoincrement())
+  name     String
+  detail   String
+  price    String
+  discount String
+  image    String
+}

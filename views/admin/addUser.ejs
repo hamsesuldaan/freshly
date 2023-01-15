@@ -1,0 +1,196 @@
+<%- contentFor('HeaderCss') %> <%- contentFor('breadcrumb') %>
+
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-sm-flex align-items-center justify-content-between"
+    >
+      <h4 class="mb-sm-0">Add User</h4>
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item">
+            <a href="/admin/users">Users</a>
+          </li>
+          <li class="breadcrumb-item active">addUsers</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('body') %>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        
+        <form class="needs-validation"  action="/admin/users" method="post">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+               
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label"
+                  >User Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom02"
+                  placeholder=" Enter User Name"
+                  value=""
+                  name="username"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom01" class="form-label"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom01"
+                  placeholder="Enter First Name"
+                  value=""
+                  name="firstname"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label"
+                  >Second Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom02"
+                  placeholder="Enter Second Name"
+                  value=""
+                  name="secondtname"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom01" class="form-label"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom01"
+                  placeholder=" Enter Your Email"
+                  value="@GMAIL.COM"
+                  name="email"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label"
+                  >Phone</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom02"
+                  placeholder="Enter User Phone Number"
+                  value="+252 (63)"
+                  name="phone"
+                  required
+                />
+               
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom03" class="form-label">Role</label>
+                <select class="form-select" id="validationCustom03" name="title" required>
+                  <option selected disabled value="">Select Role</option>
+                  <option value="Manger">Manger.</option>
+                  <option value="Staff">staff</option>
+                  <option value="Driver">Driver</option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Bordy-Guard">Bordy-Guard</option>
+                  <option value="Programmer">Programmer</option>
+                </select>
+                <div class="invalid-feedback">Please select a valid state.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom04" class="form-label">password</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="validationCustom04"
+                  placeholder="password"
+                  required
+                  name="password"
+                />
+                <div class="invalid-feedback">Please provide a valid city.</div>
+              </div>
+            </div>
+
+         
+          </div>
+          <div class="form-check mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary" type="submit">ADD</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end card -->
+  </div>
+
+  <%- contentFor('FooterJs') %>
+
+  <script src="/public/assets/libs/parsleyjs/parsley.min.js"></script>
+
+  <script src="/public/assets/js/pages/form-validation.init.js"></script>
+
+  <%- contentFor('BottomJs') %>
+</div>

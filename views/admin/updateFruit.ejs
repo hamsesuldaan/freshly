@@ -1,0 +1,180 @@
+<%- contentFor('HeaderCss') %> <%- contentFor('breadcrumb') %>
+
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-sm-flex align-items-center justify-content-between"
+    >
+     
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item">
+            <a href="/admin/fruits">fruits</a>
+          </li>
+          <li class="breadcrumb-item active">updatefruit</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('body') %>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        <form id="Ali">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="id"
+                  name="id"
+                  value="<%= fruit.id %>"
+                  placeholder="Fruit ID"
+                />
+                <label for="name">Fruit ID</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  value="<%= fruit.name %>"
+                  placeholder="Fruit Name"
+                />
+                <label for="email">Fruit Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="price"
+                  name="price"
+                  value="<%= fruit.price %>"
+                  placeholder="Fruit Price"
+                />
+                <label for="name">Fruit Price</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="discount"
+                  name="discount"
+                  value="<%=fruit.discount%>"
+                  placeholder="Fruit Discount"
+                />
+                <label for="email">Fruit Discount</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="detail"
+                  name="detail"
+                  value="<%= fruit.detail %>"
+                  placeholder="Fruit Details"
+                />
+                <label for="name">Fruit Details</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="image"
+                  name="image"
+                  value="<%=fruit.image%>"
+                  placeholder="Fruit Image"
+                />
+                <label for="email">Fruit Image</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button
+                class="btn btn-primary rounded-pill py-3 px-5"
+                type="submit"
+              >
+                Update Fruit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end card -->
+  </div>
+
+  <%- contentFor('FooterJs') %>
+
+  <script src="/public/assets/libs/parsleyjs/parsley.min.js"></script>
+
+  <script src="/public/assets/js/pages/form-validation.init.js"></script>
+
+  <%- contentFor('BottomJs') %>
+</div>
+
+<script>
+  let updateForm = document.querySelector("#Ali");
+
+  updateForm.addEventListener("submit", (e) => {
+  
+    e.preventDefault();
+
+    // 2. Call the input
+    const idInput = document.querySelector("#id");
+    const nameInput = document.querySelector("#name");
+    const priceInput = document.querySelector("#price");
+    const discountInput = document.querySelector("#discount");
+    const detailInput = document.querySelector("#detail");
+    const imageInput = document.querySelector('#image');
+
+
+
+
+
+
+    let data ={
+      id: idInput.value,
+      name: nameInput.value,
+      price: priceInput.value,
+      discount: discountInput.value,
+      detail: detailInput.value,
+      image: imageInput.value,
+
+    }
+
+    // Get the id from user
+    const id ="<%= fruit.id%>";
+
+    // console.log(id);
+    console.log(data);
+
+    // send the updated data using fetch api
+
+    fetch(`/admin/fruits/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((location.href = "/admin/fruits/"))
+      .catch((err) => console.log(err));
+  });
+</script>

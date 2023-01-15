@@ -1,0 +1,151 @@
+<%- contentFor('HeaderCss') %>
+
+<!-- DataTables -->
+<link
+  href="/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+
+<!-- Responsive datatable examples -->
+<link
+  href="/admin/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+
+<%- contentFor('breadcrumb') %>
+
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-sm-flex align-items-center justify-content-between"
+    >
+      <h4 class="mb-sm-0">contacts</h4>
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item active">contact</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('body') %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+   
+        <div class="table-responsive mt-3">
+          <table
+            class="table table-centered datatable dt-responsive nowrap"
+            style="border-collapse: collapse; border-spacing: 0; width: 100%"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+              
+                <th style="width: 120px">Action</th>
+              </tr>
+            </thead>
+            <tbody id="action">
+              <% for ( const singlecontact of contacts) {%>
+                
+        
+              <tr>
+                <td><%= singlecontact.id %></td>
+                <td><%= singlecontact.name %></td>
+                <td><%= singlecontact.email %></td>
+                <td><%= singlecontact.subject %></td>
+                <td><%= singlecontact.message %></td>
+
+                <td id="tooltip-container1">
+                  <a
+                    href="javascript:void(0);"
+                    class="me-3 text-primary"
+                    data-bs-container="#tooltip-container1"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Edit"
+                    ><i class="mdi mdi-pencil font-size-18" data-doc=""></i
+                  ></a>
+                  <a
+                  href="javascript:void(0);"
+                    class="text-danger"
+                    data-bs-container="#tooltip-container1"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Delete"
+                    ><i
+                      class="mdi mdi-trash-can font-size-18"
+                      data-id=""
+                    ></i
+                  ></a>
+                </td>
+              </tr>
+         <% } %> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('FooterJs') %>
+
+<!-- Required datatable js -->
+<script src="/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/admin/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="/admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/admin/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<script src="/admin/assets/js/pages/ecommerce-datatables.init.js"></script>
+
+<%- contentFor('BottomJs') %>
+
+<!-- <script>
+  let div = document.querySelector("#action");
+  // console.log(div.hasAttribute);
+
+  div.addEventListener("click", (e) => {
+    e.preventDefault();
+    // console.log(e.target);
+
+    // Delete Button
+    if (e.target.hasAttribute("data-id")) {
+      // console.log("yeees");
+      const id = e.target.getAttribute("data-id");
+      console.log(id);
+
+      // Call Api
+
+      fetch(`/admin/users/${id}`, { method: "DELETE" })
+        .then(location.reload())
+        .catch((err) => console.log(err));
+
+
+    }
+
+    // update 
+    
+    if (e.target.hasAttribute("data-doc")) {
+          // console.log("Update Button");
+
+          const id = e.target.getAttribute("data-doc");
+          console.log(id);
+
+          // Localhost:1200/fruits/updateForm/3
+          location.href = `/admin/users/updateForm/${id}`;
+        }
+  });
+</script> -->

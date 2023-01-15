@@ -1,0 +1,231 @@
+<%- contentFor('HeaderCss') %> <%- contentFor('breadcrumb') %>
+
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-sm-flex align-items-center justify-content-between"
+    >
+      <h4 class="mb-sm-0">ADD  USER</h4>
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item">
+            <a href="/admin/users">Users</a>
+          </li>
+          <li class="breadcrumb-item active">updateUser</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('body') %>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        <form class="needs-validation" id="hamse">
+          <div class="row">
+          
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label"
+                  >User Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder=" Enter User Name"
+                  id="username"
+                  name="username"
+                  value="<%=user.username%>"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom01" class="form-label"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter First Name"
+                  id="firstname"
+                  name="firstname"
+                  value="<%= user.firstname %>"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label"
+                  >Second Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Second Name"
+                  id="secondtname"
+                  name="secondtname"
+                  value="<%= user.secondtname %>"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom01" class="form-label">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder=" Enter Your Email"
+                  id="email"
+                  name="email"
+                  value="<%= user.email %>"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom02" class="form-label">Phone</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter User Phone Number"
+                  id="phone"
+                  name="phone"
+                  value="<%= user.phone %>"
+                  required
+                />
+
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom03" class="form-label">Role</label>
+                <select
+                  class="form-select"
+                  name="title"
+                  id="title"
+                  value=""
+                  required
+                >
+                  <option selected disabled>Select Role</option>
+                  <option value="Manger">Manger.</option>
+                  <option value="Staff">staff</option>
+                  <option value="Driver">Driver</option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Bordy-Guard">Bordy-Guard</option>
+                  <option value="Programmer">Programmer</option>
+                </select>
+                <div class="invalid-feedback">Please select a valid state.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="validationCustom04" class="form-label"
+                  >password</label
+                >
+                <input
+                class="form-control"
+               type="password"
+               name="password"
+              id="password"
+               value="<%= user.password %>"
+                placeholder="password"
+                required
+                />
+                <div class="invalid-feedback">Please provide a valid city.</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn btn-primary" type="submit">update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end card -->
+  </div>
+
+  <%- contentFor('FooterJs') %>
+
+  <script src="/public/assets/libs/parsleyjs/parsley.min.js"></script>
+
+  <script src="/public/assets/js/pages/form-validation.init.js"></script>
+
+  <%- contentFor('BottomJs') %>
+</div>
+
+<script>
+  let updateForm = document.querySelector("#hamse");
+
+  updateForm.addEventListener("submit", (e) => {
+  
+    e.preventDefault();
+
+    // 2. Call the input
+    // const idInput = document.querySelector("#id");
+    const usernameInput = document.querySelector("#username");
+    const firstnameInput = document.querySelector("#firstname");
+    const secondtnameInput = document.querySelector("#secondtname");
+    const passwordInput = document.querySelector("#password");
+    const emailInput = document.querySelector("#email");
+    const phoneInput = document.querySelector("#phone");
+    const titleInput = document.querySelector('#title');
+
+
+
+
+
+
+    let data ={
+      // id: idInput.value,
+      username: usernameInput.value,
+      firstname: firstnameInput.value,
+      secondtname: secondtnameInput.value,
+      password: passwordInput.value,
+      email: emailInput.value,
+      phone: phoneInput.value,
+      title: titleInput.value,
+    }
+
+    // Get the id from user
+    const id = "<%= user.id%>";
+
+    // console.log(id);
+    console.log(data);
+
+    // send the updated data using fetch api
+
+    fetch(`/admin/users/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((location.href = "/admin/users/"))
+      .catch((err) => console.log(err));
+  });
+</script>
